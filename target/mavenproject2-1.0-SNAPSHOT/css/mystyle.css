@@ -1,0 +1,56 @@
+.navbar{
+    background-color:silver ;
+    ;
+}
+.mx-auto{
+    width: 200px;
+    height: 200px;
+    margin-top: 20px;
+    
+}
+.banner{
+    background-color: black;
+}
+.por{
+    height: 1000px;
+    width: 1255;
+}
+.showroom {
+    height: 1000px;
+    width: 1255;
+}
+.footer{
+    background-color:rgb(113, 160, 170) ;
+    margin:0px auto;
+    padding: 20px 0px 20px 0px;
+}
+.jumbotron {
+    padding:70px 30px 70px 30px;
+    margin:0px auto;
+    background-color: black ;
+    color:floralwhite;
+}
+.vh{
+    height: 480px;
+}
+.contact{
+    margin: 50px;
+}
+.lamborghini{
+    margin: 70px;
+}
+.porsche{
+    margin: 70px;
+}
+.vinfast{
+    margin: 70px;
+}
+.lamborghini img{
+    height: 250px;
+}
+.porsche img{
+    height: 250px;
+}
+.vinfast img{
+    height: 250px;
+}
