@@ -1,5 +1,8 @@
 package Model;
 
+import Dao.NotifyDao;
+import java.util.List;
+
 public class User {
     public String id;
     public String name;
@@ -12,6 +15,7 @@ public class User {
     public String verify_key;
     public boolean admin;
     public boolean verified;
+    private List<Notification> notifications;
 
     public User() {
     }
@@ -90,4 +94,16 @@ public class User {
     public boolean isVerified() {
         return verified;
     }
+
+    public List<Notification> getNotifications() {
+        NotifyDao nd = new NotifyDao();
+        this.notifications = nd.getUserNotification(id);
+        return notifications;
+    }
+
+    public void setNotifications(List<Notification> notifications) {
+        this.notifications = notifications;
+    }
+    
+    
 }

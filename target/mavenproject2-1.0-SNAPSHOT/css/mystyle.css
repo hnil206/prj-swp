@@ -54,3 +54,114 @@
 .vinfast img{
     height: 250px;
 }
+
+
+/* Style for the notification bell container */
+.header__notify-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style for each notification item */
+.header__notify-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+/*
+ Style for viewed notifications 
+.header__notify-item--viewed {
+    background-color: #fff;  Change background color for viewed notifications 
+}
+
+ Style for the notification image 
+.header__notify-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+ Style for the notification information 
+.header__notify-info {
+    flex: 1;
+}
+
+ Style for notification title 
+.header__notify-name {
+    font-weight: bold;
+    color: #333;
+}
+
+ Style for notification timestamp 
+.header__notify-description:first-of-type {
+    color: orange;
+    font-size: 14px;
+}
+
+ Style for notification message 
+.header__notify-description:last-of-type {
+    font-size: 14px;
+    color: #555;
+}*/
+
+/* CSS cho thông báo */
+.header__notify-item {
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    border-bottom: 1px solid #ccc;
+}
+
+.header__notify-img {
+    width: 50px; /* Điều chỉnh kích thước ảnh thông báo */
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%; /* Bo tròn ảnh */
+    margin-right: 10px;
+}
+
+.header__notify-info {
+    flex: 1;
+}
+
+.header__notify-name {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.header__notify-description {
+    color: #666;
+}
+
+/* Màu nền và màu chữ cho thông báo chưa xem */
+.header__notify-item:not(.header__notify-item--viewed) {
+    background-color: #f7f7f7; /* Màu nền cho thông báo chưa xem */
+}
+
+.header__notify-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* CSS cho link thông báo trên thanh điều hướng */
+.nav-link {
+    /* Thêm các thuộc tính CSS tùy chỉnh cho link ở đây */
+    text-decoration: none;
+    color: white;
+    /* Các hiệu ứng hover hoặc focus cho link */
+}
+
+.nav-link.primary {
+    /* Màu chữ khi trạng thái là primary */
+    color: #007bff;
+}
+
+.nav-link.danger {
+    /* Màu chữ khi trạng thái là danger */
+    color: #dc3545;
+}

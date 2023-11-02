@@ -14,7 +14,7 @@
               ${success}
           </div>
         </c:if>
-        <h1>Tất người dùng</h1>
+        <h1>Tất cả người dùng</h1>
         <table class="table table-bordered table-striped mt-2" id="mytable">
           <thead>
           <tr>

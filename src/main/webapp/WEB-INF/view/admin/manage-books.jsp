@@ -36,7 +36,7 @@
                 <td class="col-md-3">${item.getDescription()}</td>
                 <td class="col-md-3">
                   <a href="${pageContext.request.contextPath}/${item.getImage()}">
-                    <img src="${pageContext.request.contextPath}/${item.getImage()}" alt="" style="max-width: 100%;max-height: 100%;object-fit: cover;">
+                    <img src="${pageContext.request.contextPath}/${item.getImage()}" alt="" style="max-width: 100%;max-height: 100% ;object-fit: cover;">
                   </a>
                 </td>
                 <td class="col-md-1">${item.getAuthor()}</td>
@@ -87,7 +87,7 @@
               </div>
               <div class="form-group">
                 <label for="genre">Ngày sinh (dd/mm/yyyy)</label>
-                <input required type="text" class="form-control" name="genre" id="genre">
+                <input required type="date" class="form-control" name="genre" id="genre">
               </div>
               <div class="form-group">
                 <label for="quantity">Số năm kinh nghiệm</label>

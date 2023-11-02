@@ -40,7 +40,7 @@
     <div class="col-md-6">
       <div class="form-container card card-body">
         <div class="form-group">
-          <label>Hình ảnh của sách hiện tại</label>
+          <label>Hình ảnh của người giúp việc hiện tại</label>
           <a href="${pageContext.request.contextPath}/${book.getImage()}">
             <img src="${pageContext.request.contextPath}/${book.getImage()}" alt="" style="width: 100%">
           </a>

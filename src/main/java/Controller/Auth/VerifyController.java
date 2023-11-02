@@ -22,7 +22,7 @@ public class VerifyController extends HttpServlet {
                 req.setAttribute("message", "Tài khoản này đã được xác thực.");
             } else {
                 if (userDao.activeById(Integer.parseInt(user.id))){
-                    req.setAttribute("message", "Xác thực tài khoản thành công");
+                    req.setAttribute("message", "Xác thực tài khoản thành công, <a href='/mavenproject2/login'>Đăng nhập</a> để trải nghiệm hệ thống.");
                 }else {
                     req.setAttribute("message", "Xác thực tài khoản thất bại, vui lòng liên hệ admin.");
                 }

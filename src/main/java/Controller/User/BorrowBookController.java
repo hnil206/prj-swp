@@ -1,7 +1,9 @@
 package Controller.User;
 
 import Dao.BorrowDao;
+import Dao.NotifyDao;
 import Model.Borrow;
+import Model.Notification;
 import Model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -20,10 +22,13 @@ public class BorrowBookController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String book_id = req.getParameter("book_id");
         String user_id = ((User) req.getSession().getAttribute("user")).id;
+        NotifyDao nd = new NotifyDao();
         if (!new BorrowDao().checkBeforeBorrow(user_id, book_id)){
             req.getSession().setAttribute("session_mess", "warning|Bạn đang yêu cầu hoặc đang thuê người này rồi.");
         } else {
             if (new BorrowDao().addBorrow(user_id, book_id)){
+                System.out.println("gaygay");
+                nd.createNoti();
                 req.getSession().setAttribute("session_mess", "success|Gửi yêu cầu thành công. Chờ admin xác nhận.");
             } else {
                 req.getSession().setAttribute("session_mess", "error|Đã có lỗi xảy ra.");

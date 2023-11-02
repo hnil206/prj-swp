@@ -33,6 +33,8 @@ public class LoginController extends HttpServlet {
             req.getRequestDispatcher("/WEB-INF/view/auth/login.jsp").forward(req, resp);
         } else {
             if (user.isVerified()){
+                
+//                user.getNotifications();
                 req.getSession().setAttribute("user", user);
                 resp.sendRedirect(req.getContextPath());
             } else {

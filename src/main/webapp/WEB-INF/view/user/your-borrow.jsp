@@ -19,7 +19,7 @@
                         <tr>
                             <td>${item.getId()}</td>
                             <td>
-                                        ${item.getBook_name()}
+                             ${item.getBook_name()}
                             </td>
                             <td>${item.getStatus() == 0 ? "<p class='text-info'>Chờ xác nhận</p>" : (item.getStatus() == 1 ? "<p class='text-success'>Đã xác nhận</p>" : "<p class='text-danger'>Đã Huỷ</p>")}</td>
                             <td>${item.getCreated_at()}</td>
@@ -34,6 +34,6 @@
 <%@include file="../include/foot.jsp"%>
 <script>
     const table = $('#mytable').DataTable( {
-        "order": [],
+        "order": []
     } );
 </script>

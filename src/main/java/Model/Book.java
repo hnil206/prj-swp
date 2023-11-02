@@ -10,6 +10,7 @@ public class Book {
     String quantity;
     boolean available;
     String borrowing;
+   
     public Book(String id, String title, String description, String image, String author, String genre, String quantity, boolean available, String borrowing) {
         this.id = id;
         this.title = title;
@@ -20,9 +21,10 @@ public class Book {
         this.quantity = quantity;
         this.available = available;
         this.borrowing = borrowing;
+       
     }
 
-    public Book(String id, String title, String description, String image, String author, String genre, String quantity, boolean available) {
+    public Book(String id, String title, String description, String image, String author, String genre, String quantity, boolean available ) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -31,6 +33,7 @@ public class Book {
         this.genre = genre;
         this.quantity = quantity;
         this.available = available;
+        
     }
 
     public String getBorrowing() {
@@ -73,4 +76,7 @@ public class Book {
     public boolean isAvailable() {
         return available;
     }
+    
+
 }
+  

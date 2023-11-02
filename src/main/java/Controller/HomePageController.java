@@ -2,6 +2,7 @@ package Controller;
 
 import Dao.BookDao;
 import Model.Book;
+import Model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;

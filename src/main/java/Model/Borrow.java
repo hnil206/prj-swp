@@ -27,6 +27,15 @@ public class Borrow {
         this.book_name = book_name;
     }
 
+    public Borrow(String book_id, String user_id, String status, String created_at, String username, String book_name) {
+        this.book_id = book_id;
+        this.user_id = user_id;
+        this.status = status;
+        this.created_at = created_at;
+        this.username = username;
+        this.book_name = book_name;
+    }
+
     public String getUsername() {
         return username;
     }

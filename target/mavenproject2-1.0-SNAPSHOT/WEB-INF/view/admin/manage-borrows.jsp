@@ -19,7 +19,7 @@
                             ${warning}
                     </div>
                 </c:if>
-                <h1>Tất đơn mượn sách</h1>
+                <h1>Tất cả đơn thuê</h1>
                 <table ${pageContext.request.getParameter("borrow_id") != null ? "hidden" : ""} class="table table-bordered table-striped mt-2" id="mytable">
                     <thead>
                     <tr>
@@ -32,19 +32,19 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach var="item" items="${borrows}">
+                    <c:forEach var="item" items="${borrows}" varStatus="loop">
                         <tr>
-                            <td>${item.getId()}</td>
+                            <td>${borrows.size() - loop.index}</td>
                             <td>${item.getUsername()}</td>
                             <td>
                                 <a href="${pageContext.request.contextPath}/admin/edit-book?book_id=${item.getId()}">
-                                        ${item.getBook_name()}
+                                        ${item.getBookname()}
                                 </a>
                             </td>
                             <td>${item.getStatus() == 0 ? "<p class='text-info'>Chờ xác nhận</p>" : (item.getStatus() == 1 ? "<p class='text-success'>Đã xác nhận</p>" : "<p class='text-danger'>Đã Huỷ</p>")}</td>
-                            <td>${item.getCreated_at()}</td>
+                            <td>${item.getCreate_at()}</td>
                             <td>
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="${item.getId()}|${item.getUsername()}|${item.getBook_name()}|${item.getStatus()}|${item.getBook_id()}">Xác nhận / Hủy</button>
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="${item.getId()}|${item.getUsername()}|${item.getBookname()}|${item.getStatus()}|${item.getBook_id()}|${item.getStartdate()}|${item.getEnddate()}|${item.getUseraddress()}">Xác nhận / Hủy</button>
                             </td>
                         </tr>
                     </c:forEach>
@@ -57,14 +57,31 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="" method="post">
+            <form action="manage-borrow-books" method="post">
+                
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel"></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <input type="hidden" id="borrow_id" name="borrow_id">
                 <input type="hidden" id="book_id" name="book_id">
             </div>
+                
             <div class="modal-body">
+                <div class="form-group">
+                    <h3>Start date</h3>
+                    <input type="date" readonly="true" id="startdate"/><br/>
+                    <h3>End date</h3>
+                    <input type="date" readonly="true" id="enddate"/><br/>
+                    <h2>Work address</h2>
+                    <h3>Tỉnh/Thành phố:</h3>
+                    <input type="text" readonly="true" id="province"/><br/>
+                    <h3>Quận/Huyện:</h3>
+                    <input type="text" readonly="true" id="district"/><br/>
+                    <h3>Phường/Xã:</h3>
+                    <input type="text" readonly="true" id="ward"/><br/>
+                    <h3>Work address</h3>
+                    <input type="text" readonly="true" id="useraddress"/><br/>
+                    <div/>
                     <div class="form-group">
                         <label for="status">Thay đổi trạng thái</label>
                         <select class="form-control" name="status" id="status">
@@ -99,9 +116,24 @@
     exampleModal.addEventListener('show.bs.modal', function (event) {
         const button = event.relatedTarget;
         const data = button.getAttribute('data-bs-whatever');
-        document.getElementById("exampleModalLabel").innerText = "đơn thuê: " + data.split("|")[1] + " thuê nhân viên có tên: " + data.split("|")[2]
+        var booktype=data.split("|")[7]
+        console.log(booktype)
+        if(booktype == "1"){
+            booktype="Part-time"
+        }else{
+            booktype="Fulltime"
+        }
+        document.getElementById("exampleModalLabel").innerText = "đơn thuê: " + data.split("|")[1] + " thuê nhân viên có tên: " + data.split("|")[2]+" "+booktype
         document.getElementById("borrow_id").value = data.split("|")[0]
         document.getElementById("book_id").value = data.split("|")[4]
+        document.getElementById("startdate").value=data.split("|")[5]
+        document.getElementById("enddate").value=data.split("|")[6]
+        document.getElementById("useraddress").value = data.split("|")[7]
+        document.getElementById("ward").value = data.split("|")[7]
+        document.getElementById("district").value = data.split("|")[7]
+        document.getElementById("province").value = data.split("|")[7]
+
+        console.log('data', );
         if (data.split("|")[3] === "-1"){
             document.getElementById("-1").selected = true;
             document.getElementById("-1").disabled = true;
@@ -113,4 +145,6 @@
             document.getElementById("1").disabled = true;
         }
     })
+    //api address
+    
 </script>
