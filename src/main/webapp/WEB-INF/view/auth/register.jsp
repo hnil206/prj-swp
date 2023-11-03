@@ -20,31 +20,31 @@
                         <h2>Đăng kí</h2>
                         <form action="" method="post">
                             <div class="form-group">
-                                <label for="name">Tên</label>
+                                <label for="name">Tên*</label>
                                 <input class="form-control m-2" type="text" id="name" name="name" placeholder="Nhập tên">
                             </div>
                             <div class="form-group">
-                                <label for="email">Email</label>
+                                <label for="email">Email*</label>
                                 <input class="form-control m-2" type="text" id="email" name="email" placeholder="Nhập email">
                             </div>
                             <div class="form-group">
-                                <label for="address">Địa chỉ</label>
+                                <label for="address">Địa chỉ*</label>
                                 <input class="form-control m-2" type="text" id="address" name="address" placeholder="Nhập địa chỉ">
                             </div>
                             <div class="form-group">
-                                <label for="tel">Số điện thoại</label>
+                                <label for="tel">Số điện thoại*</label>
                                 <input class="form-control m-2" type="text" id="tel" name="tel" placeholder="Nhập số điện thoại">
                             </div>
                             <div class="form-group">
-                                <label for="birthday">Ngày sinh</label>
+                                <label for="birthday">Ngày sinh*</label>
                                 <input class="form-control m-2" type="date" id="birthday" name="birthday" placeholder="Nhập tên">
                             </div>
                             <div class="form-group">
-                                <label for="password">Mật khẩu</label>
+                                <label for="password">Mật khẩu*</label>
                                 <input class="form-control m-2" type="password" id="password" name="password" placeholder="Nhập Mật khẩu">
                             </div>
                             <div class="form-group">
-                                <label for="re_password">Nhập lại mật khẩu</label>
+                                <label for="re_password">Nhập lại mật khẩu*</label>
                                 <input class="form-control m-2" type="password" id="re_password" name="re_password" placeholder="Nhập lại mật khẩu">
                             </div>
                             <div class="d-grid gap-2 mt-2 mb-2">
