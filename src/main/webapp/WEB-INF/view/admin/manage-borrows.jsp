@@ -28,6 +28,7 @@
                         <th>Tên người giúp việc</th>
                         <th>Trạng thái</th>
                         <th>Ngày làm đơn</th>
+                        <th>Loại dịch vụ</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -43,6 +44,7 @@
                             </td>
                             <td>${item.getStatus() == 0 ? "<p class='text-info'>Chờ xác nhận</p>" : (item.getStatus() == 1 ? "<p class='text-success'>Đã xác nhận</p>" : "<p class='text-danger'>Đã Huỷ</p>")}</td>
                             <td>${item.getCreate_at()}</td>
+                            <td>${item.getServiceType()}</td>
                             <td>
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="${item.getId()}|${item.getUsername()}|${item.getBookname()}|${item.getStatus()}|${item.getBook_id()}|${item.getStartdate()}|${item.getEnddate()}|${item.getUseraddress()}">Xác nhận / Hủy</button>
                             </td>
@@ -72,13 +74,13 @@
                     <input type="date" readonly="true" id="startdate"/><br/>
                     <h3>End date</h3>
                     <input type="date" readonly="true" id="enddate"/><br/>
-                    <h2>Work address</h2>
+<!--                    <h2>Work address</h2>
                     <h3>Tỉnh/Thành phố:</h3>
                     <input type="text" readonly="true" id="province"/><br/>
                     <h3>Quận/Huyện:</h3>
                     <input type="text" readonly="true" id="district"/><br/>
                     <h3>Phường/Xã:</h3>
-                    <input type="text" readonly="true" id="ward"/><br/>
+                    <input type="text" readonly="true" id="ward"/><br/>-->
                     <h3>Work address</h3>
                     <input type="text" readonly="true" id="useraddress"/><br/>
                     <div/>
@@ -129,9 +131,9 @@
         document.getElementById("startdate").value=data.split("|")[5]
         document.getElementById("enddate").value=data.split("|")[6]
         document.getElementById("useraddress").value = data.split("|")[7]
-        document.getElementById("ward").value = data.split("|")[7]
-        document.getElementById("district").value = data.split("|")[7]
-        document.getElementById("province").value = data.split("|")[7]
+//        document.getElementById("ward").value = data.split("|")[8]
+//        document.getElementById("district").value = data.split("|")[9]
+//        document.getElementById("province").value = data.split("|")[10]
 
         console.log('data', );
         if (data.split("|")[3] === "-1"){

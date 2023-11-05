@@ -35,11 +35,14 @@
         <servlet-name>NotificationServlet</servlet-name>
         <servlet-class>Controller.Admin.NotificationServlet</servlet-class>
     </servlet>
-     <servlet>
+    <servlet>
         <servlet-name>NotifyServlet</servlet-name>
         <servlet-class>Controller.Admin.NotifyServlet</servlet-class>
     </servlet>
-
+    <servlet>
+        <servlet-name>FeedbacksController</servlet-name>
+        <servlet-class>Controller.User.FeedbacksController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomePageController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -207,6 +210,10 @@
     <servlet-mapping>
         <servlet-name>NotifyServlet</servlet-name>
         <url-pattern>/notifyservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FeedbacksController</servlet-name>
+        <url-pattern>/feedbacks</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

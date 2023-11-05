@@ -58,23 +58,23 @@ public class BorrowDao {
         }
 
     }
-    
-    public String getLastDateById(String id){
+
+    public String getLastDateById(String id) {
         String date = "";
-         try {
-            String sql = "SELECT MAX(enddate) AS latest_start_date FROM borrows WHERE book_id = ?";
+        try {
+            String sql = "SELECT MAX(enddate) AS latest_end_date FROM borrows WHERE book_id = ?";
             connection = Connect.getConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, id);
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 date = resultSet.getString(1);
-            } 
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-         
-         return date;
+
+        return date;
     }
 
     public boolean addBorrow(String user_id, String book_id) {
@@ -160,6 +160,7 @@ public class BorrowDao {
                         resultSet.getInt(9),
                         resultSet.getString(10),
                         resultSet.getString(11),
+                        resultSet.getString(12),
                         resultSet.getString("book_name")
                 ));
             }
@@ -186,9 +187,9 @@ public class BorrowDao {
             System.out.println("gay:" + userid);
             System.out.println("gay:" + status);
             String statusName = "";
-            if(status.equals("-1")){
+            if (status.equals("-1")) {
                 statusName = "Hủy";
-            }else if(status.equals("1")){
+            } else if (status.equals("1")) {
                 statusName = "Xác nhận";
             }
 
@@ -201,9 +202,9 @@ public class BorrowDao {
     }
 
     public void createBorrow(int userId, int bookId, int bookTypeId, String startDate, String endDate,
-            String userAddress, String paymentStatus, Integer status, Timestamp createdAt) {
+            String userAddress, String paymentStatus, Integer status, Timestamp createdAt, String type) {
         String sql = "INSERT INTO borrows (user_id, book_id, booktypeid, startdate, enddate, useraddress, "
-                + "paymentstatus, status, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + "paymentstatus, status, created_at, serviceType) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         connection = Connect.getConnection();
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
 
@@ -216,6 +217,7 @@ public class BorrowDao {
             statement.setString(7, paymentStatus);
             statement.setObject(8, status);
             statement.setTimestamp(9, createdAt);
+            statement.setString(10, type);
 
             statement.executeUpdate();
             System.out.println("Borrow record created successfully.");
@@ -226,7 +228,7 @@ public class BorrowDao {
 
     public static void main(String[] args) {
         BorrowDao bd = new BorrowDao();
-        System.out.println(bd.getLastDateById("2"));
-//        System.out.println(bd.getAllBorrow2().get(0));
+//        System.out.println(bd.getLastDateById("2"));
+        System.out.println(bd.getAllBorrow2().get(0));
     }
 }

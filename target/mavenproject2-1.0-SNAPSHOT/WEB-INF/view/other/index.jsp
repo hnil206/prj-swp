@@ -29,14 +29,14 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link rel="stylesheet" href="css/mystyle.css" />
     </head>
-    
-        <div class="container">
-            <h1>CleanHouse - 
-                "Giải pháp giúp việc đơn giản, dễ dàng - để bạn tập trung vào những khoảnh khắc quý báu trong cuộc sống!"</h1>
+
+    <div class="container">
+        <h1>CleanHouse - 
+            "Giải pháp giúp việc đơn giản, dễ dàng - để bạn tập trung vào những khoảnh khắc quý báu trong cuộc sống!"</h1>
 
 
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <c:forEach var="item" items="${books}">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <c:forEach var="item" items="${books}">             
                     <div class="col">
                         <div class="card shadow-sm">
                             <img src="${pageContext.request.contextPath}/${item.getImage()}" alt="" width="100%" height="200px" style="object-fit: contain">
@@ -89,11 +89,11 @@
                             </div>
                         </div>
                     </div>
-                </c:forEach>
-            </div>
+            </c:forEach>
         </div>
+    </div>
 
 
-    </body>
+</body>
 </html>
 <%@include file="../include/foot.jsp"%>

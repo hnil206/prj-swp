@@ -146,6 +146,10 @@ public class BookDao {
     public boolean updateBook(String id, String title, String description, String image, String author, String genre, String quantity, String available){
         String sql = "update books set title = ?, description  = ?, image = ?, author = ?, genre = ?, quantity = ?, available = ? where id = ?";
         connection = Connect.getConnection();
+        boolean status = true;
+        if(available.equals("false")){
+            status = false;
+        }
         try {
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, title);
@@ -154,7 +158,7 @@ public class BookDao {
             preparedStatement.setString(4, author);
             preparedStatement.setString(5, genre);
             preparedStatement.setString(6, quantity);
-            preparedStatement.setString(7, available);
+            preparedStatement.setBoolean(7, status);
             preparedStatement.setString(8, id);
             int row = preparedStatement.executeUpdate();
             return row>0;

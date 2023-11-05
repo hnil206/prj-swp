@@ -18,57 +18,59 @@
     </c:if>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
         <c:forEach var="item" items="${books}">
-            <div class="col">
-                <div class="card shadow-sm">
-                    <img src="${pageContext.request.contextPath}/${item.getImage()}" alt="" width="100%" height="200px" style="object-fit: contain">
-                    <div class="card-body">
-                        <p title="${item.getDescription()}" class="card-text" style="height: 150px; overflow: hidden; text-overflow: ellipsis; max-width: 100%">
-                            <span class="fw-bold">
-                                Họ và tên :
-                            </span>
-                            <span>
-                                ${item.getTitle()}
-                            </span>
-                            <br>
-                            <span class="fw-bold">
-                                Quê Quán :
-                            </span>
-                            <span>
-                                ${item.getAuthor()}
-                            </span>
-                            <br>
-                            <span class="fw-bold">
-                                Ngày sinh :
-                            </span>
-                            <span>
-                                ${item.getGenre()}
-                            </span>
-                            <br>
-                            <span class="fw-bold">
-                                Mô tả :
-                            </span>
-                            <span>
-                                ${item.getDescription()}
-                            </span>
-                            <br>
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group mr-1">
+            <c:if test="${item.isAvailable()}">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="${pageContext.request.contextPath}/${item.getImage()}" alt="" width="100%" height="200px" style="object-fit: contain">
+                        <div class="card-body">
+                            <p title="${item.getDescription()}" class="card-text" style="height: 150px; overflow: hidden; text-overflow: ellipsis; max-width: 100%">
+                                <span class="fw-bold">
+                                    Họ và tên :
+                                </span>
+                                <span>
+                                    ${item.getTitle()}
+                                </span>
+                                <br>
+                                <span class="fw-bold">
+                                    Quê Quán :
+                                </span>
+                                <span>
+                                    ${item.getAuthor()}
+                                </span>
+                                <br>
+                                <span class="fw-bold">
+                                    Ngày sinh :
+                                </span>
+                                <span>
+                                    ${item.getGenre()}
+                                </span>
+                                <br>
+                                <span class="fw-bold">
+                                    Mô tả :
+                                </span>
+                                <span>
+                                    ${item.getDescription()}
+                                </span>
+                                <br>
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group mr-1">
 
-                                <input type="hidden" name="book_id" value="${item.getId()}">
-                                <button style="width: 100%;color: white" onclick="insert('${item.getId()}')" class="btn btn-success mr-1" data-bs-toggle="modal" data-bs-target="#userForm">Đặt thuê</button>
-
-                            </div>
-                            <div class="btn-group ml-1">
-                                <form action="${pageContext.request.contextPath}/view-book-detail?book_id=${item.getId()}">
                                     <input type="hidden" name="book_id" value="${item.getId()}">
-                                    <button style="width: 100%;color: white" type="submit" class="btn btn-info ml-1">Xem chi tiết</button>
-                                </form>
+                                    <button style="width: 100%;color: white" onclick="insert('${item.getId()}')" class="btn btn-success mr-1" data-bs-toggle="modal" data-bs-target="#userForm">Đặt thuê</button>
+
+                                </div>
+                                <div class="btn-group ml-1">
+                                    <form action="${pageContext.request.contextPath}/view-book-detail?book_id=${item.getId()}">
+                                        <input type="hidden" name="book_id" value="${item.getId()}">
+                                        <button style="width: 100%;color: white" type="submit" class="btn btn-info ml-1">Xem chi tiết</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </c:if>
         </c:forEach>
         <section class="dashboard">
             <div class="dash-content">
@@ -87,13 +89,55 @@
                                     <input type="hidden" name="bookid" id="bookid"/>
                                     <table>
                                         <tr>
-                                            <td><label for="name">Start date</label></td>
+                                            <td><label for="startdate">Start date</label></td>
                                             <td><input type="date" name="startdate" id="startdate" required></td>
                                         </tr>
                                         <tr>
-                                            <td><label for="name">End date</label></td>
-                                            <td><input type="date" name="enddate" id="enndate" required></td>
+                                            <td><label for="enddate">End date</label></td>
+                                            <td><input type="date" name="enddate" id="enddate" required></td>
                                         </tr>
+                                        <!--                                        <script>
+                                                                                    var today = new Date().toISOString().split('T')[0];
+                                                                                    document.getElementById('startdate').setAttribute('min', today);
+                                                                                    document.getElementById('enddate').setAttribute('min', today);
+                                                                                </script>-->
+                                        <tr>
+                                            <td><label for="serviceType">Choose service:</label></td>
+                                            <td>
+                                                <select name="serviceType" id="serviceType">
+                                                    <option value="Giúp việc gia đình">Giúp việc gia đình</option>
+                                                    <option value="Chăm sóc trẻ em">Chăm sóc trẻ em</option>
+                                                    <option value="Chăm sóc người già">Chăm sóc người già</option>
+                                                    <option value="Chăm sóc người bệnh">Chăm sóc người bệnh</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Khác:</td>
+                                            <td><input type="text" name="otherType" id="nameInput"></td>
+                                        </tr>
+
+                                        <script>
+                                            var serviceType = document.getElementById('serviceType');
+                                            var nameInput = document.getElementById('nameInput');
+
+                                            serviceType.addEventListener('change', function () {
+                                                if (nameInput.value.trim() !== '') {
+                                                    serviceType.disabled = true;
+                                                } else {
+                                                    serviceType.disabled = false;
+                                                }
+                                            });
+
+                                            nameInput.addEventListener('input', function () {
+                                                if (nameInput.value.trim() !== '') {
+                                                    serviceType.disabled = true;
+                                                } else {
+                                                    serviceType.disabled = false;
+                                                }
+                                            });
+                                        </script>
+
                                         <tr>
                                             <td>Address</td>
                                             <td>
@@ -112,9 +156,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="ward">Địa chỉ cụ thể</label><br>
-                                                        <input type="adress" name="address" id="useraddress" required>
-                                                        
-                                                        
+                                                        <input type="adress" name="address" id="useraddress" required>                                                     
                                                     </div>
                                                 </div>
                                             </td>

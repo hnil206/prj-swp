@@ -69,33 +69,49 @@ public class InsertBorrow extends HttpServlet {
         String id = request.getParameter("bookid");
         String startdate = request.getParameter("startdate");
         String lastDate = bd.getLastDateById(id);
-
+        System.out.println("bookud" + id);
         String startdateString = request.getParameter("startdate");
-        String lastDateString = bd.getLastDateById(id);
+        String lastDateString = bd.getLastDateById(id); //kiem tra han cuoi cung duoc dat
+        String enddate = request.getParameter("enddate"); //cai nay lay tu form
 
+        System.out.println("okok" + startdateString + lastDateString);
 // Parse the strings as Date objects using SimpleDateFormat
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date startingdate = null;
         Date lastingDate = null;
 
-        try {
-            startingdate = dateFormat.parse(startdateString);
-            lastingDate = dateFormat.parse(lastDateString);
-        } catch (java.text.ParseException e) {
-            // Handle the parsing exception, if any
-            e.printStackTrace();
+        if (lastDateString != null && !lastDateString.isBlank() && !lastDateString.isEmpty()) {
+            try {
+                startingdate = dateFormat.parse(startdateString);
+                lastingDate = dateFormat.parse(lastDateString);
+            } catch (java.text.ParseException e) {
+                // Handle the parsing exception, if any
+                e.printStackTrace();
+            }
         }
 
 // Compare the dates using the compareTo method
         if (startingdate != null && lastingDate != null && startingdate.compareTo(lastingDate) < 0) {
-            request.getSession().setAttribute("session_mess", "warning|Người này đã được đặt đến "+ lastDate);
+            request.getSession().setAttribute("session_mess", "warning|Người này đã được đặt đến " + lastDate);
         } else {
 
-            String enddate = request.getParameter("enddate");
             String address = request.getParameter("address");
             String booktype = request.getParameter("booktype");
             log(booktype + id + startdate + enddate);
+            //gia tri cho cot serviceType trong bang borrows
+            String type;
+            String serviceType = request.getParameter("serviceType");
+            String otherType = request.getParameter("otherType");
+            if (otherType.isBlank() || otherType.isEmpty()) {
+                type = serviceType;
+            } else {
+                type = otherType;
+            }
             String thanhtoan = request.getParameter("thanhtoan");
+            String province = request.getParameter("province");
+            String district = request.getParameter("district");
+            String ward = request.getParameter("ward");
+            String workAddress = province + "," + district + "," + ward + "," + address;
             int ibooktype = Integer.parseInt(booktype);
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
@@ -107,7 +123,7 @@ public class InsertBorrow extends HttpServlet {
             BorrowDao borrow = new BorrowDao();
             NotifyDao nd = new NotifyDao();
             try {
-                borrow.createBorrow(userid, iid, ibooktype, startdate, enddate, address, thanhtoan, 0, timestamp2);
+                borrow.createBorrow(userid, iid, ibooktype, startdate, enddate, workAddress, thanhtoan, 0, timestamp2, type);
                 nd.createNoti();
                 request.getSession().setAttribute("session_mess", "success|Gửi yêu cầu thành công. Chờ admin xác nhận.");
             } catch (Exception e) {
@@ -136,6 +152,18 @@ public class InsertBorrow extends HttpServlet {
         String address = request.getParameter("address");
         String booktype = request.getParameter("getbooktype");
         log(booktype + id + startdate + enddate);
+        String type;
+        String serviceType = request.getParameter("serviceType");
+        String otherType = request.getParameter("otherType");
+        if (otherType.isBlank() || otherType.isEmpty()) {
+            type = serviceType;
+        } else {
+            type = otherType;
+        }
+        String province = request.getParameter("province");
+        String district = request.getParameter("district");
+        String ward = request.getParameter("ward");
+        String workAddress = province + "," + district + "," + ward + "," + address;
         String thanhtoan = request.getParameter("thanhtoan");
         int ibooktype = Integer.parseInt(booktype);
         HttpSession session = request.getSession();
@@ -146,7 +174,7 @@ public class InsertBorrow extends HttpServlet {
         Date date = new Date();
         Timestamp timestamp2 = new Timestamp(date.getTime());
         BorrowDao borrow = new BorrowDao();
-        borrow.createBorrow(userid, iid, ibooktype, startdate, enddate, address, thanhtoan, 1, timestamp2);
+        borrow.createBorrow(userid, iid, ibooktype, startdate, enddate, workAddress, thanhtoan, 1, timestamp2, type);
         response.sendRedirect("/mavenproject2/");
     }
 

@@ -21,6 +21,8 @@ public class NewBrrow {
     private String create_at;
     private String username;
     private String bookname;
+    private String serviceType;
+    private boolean isFeedback;
 
     public NewBrrow(int id, int user_id, int book_id, int booktypeid, String startdate, String enddate, String useraddress, String paymentstatus, int status, String create_at, String username, String bookname) {
         this.id = id;
@@ -37,6 +39,38 @@ public class NewBrrow {
         this.bookname = bookname;
     }
 
+    public NewBrrow(int id, int user_id, int book_id, int booktypeid, String startdate, String enddate, String useraddress, String paymentstatus, int status, String create_at,String serviceType ,String username, String bookname) {
+        this.id = id;
+        this.user_id = user_id;
+        this.book_id = book_id;
+        this.booktypeid = booktypeid;
+        this.startdate = startdate;
+        this.enddate = enddate;
+        this.useraddress = useraddress;
+        this.paymentstatus = paymentstatus;
+        this.status = status;
+        this.create_at = create_at;
+        this.username = username;
+        this.bookname = bookname;
+        this.serviceType = serviceType;
+    }
+    
+     public NewBrrow(int id, int user_id, int book_id, int booktypeid, String startdate, String enddate, String useraddress, String paymentstatus, int status, String create_at,String serviceType ,String username, String bookname, boolean isFeedback) {
+        this.id = id;
+        this.user_id = user_id;
+        this.book_id = book_id;
+        this.booktypeid = booktypeid;
+        this.startdate = startdate;
+        this.enddate = enddate;
+        this.useraddress = useraddress;
+        this.paymentstatus = paymentstatus;
+        this.status = status;
+        this.create_at = create_at;
+        this.username = username;
+        this.bookname = bookname;
+        this.serviceType = serviceType;
+        this.isFeedback = isFeedback;
+    }
     public int getId() {
         return id;
     }
@@ -132,5 +166,29 @@ public class NewBrrow {
     public void setBookname(String bookname) {
         this.bookname = bookname;
     }
+
+    public String getServiceType() {
+        return serviceType;
+    }
+
+    public void setServiceType(String serviceType) {
+        this.serviceType = serviceType;
+    }
+
+    public boolean isIsFeedback() {
+        return isFeedback;
+    }
+
+    public void setIsFeedback(boolean isFeedback) {
+        this.isFeedback = isFeedback;
+    }
+
+    
+    
+    @Override
+    public String toString() {
+        return "NewBrrow{" + "id=" + id + ", user_id=" + user_id + ", book_id=" + book_id + ", booktypeid=" + booktypeid + ", startdate=" + startdate + ", enddate=" + enddate + ", useraddress=" + useraddress + ", paymentstatus=" + paymentstatus + ", status=" + status + ", create_at=" + create_at + ", username=" + username + ", bookname=" + bookname + '}';
+    }
      
+    
 }

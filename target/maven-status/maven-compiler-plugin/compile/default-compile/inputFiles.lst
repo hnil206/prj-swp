@@ -12,6 +12,7 @@ D:\5\SWP\ChienHoang\mavenproject2_SWP\mavenproject2_SWP_CH\src\main\java\com\myc
 D:\5\SWP\ChienHoang\mavenproject2_SWP\mavenproject2_SWP_CH\src\main\java\Controller\Admin\ViewBorrowingOfBook.java
 D:\5\SWP\ChienHoang\mavenproject2_SWP\mavenproject2_SWP_CH\src\main\java\Controller\Admin\ManageUserController.java
 D:\5\SWP\ChienHoang\mavenproject2_SWP\mavenproject2_SWP_CH\src\main\java\Controller\HomePageController.java
+D:\5\SWP\ChienHoang\mavenproject2_SWP\mavenproject2_SWP_CH\src\main\java\Controller\User\FeedbacksController.java
 D:\5\SWP\ChienHoang\mavenproject2_SWP\mavenproject2_SWP_CH\src\main\java\Controller\Auth\LoginController.java
 D:\5\SWP\ChienHoang\mavenproject2_SWP\mavenproject2_SWP_CH\src\main\java\Controller\Auth\ForgotPasswordController.java
 D:\5\SWP\ChienHoang\mavenproject2_SWP\mavenproject2_SWP_CH\src\main\java\Controller\Auth\RegisterController.java
@@ -34,7 +35,9 @@ D:\5\SWP\ChienHoang\mavenproject2_SWP\mavenproject2_SWP_CH\src\main\java\Dao\Not
 D:\5\SWP\ChienHoang\mavenproject2_SWP\mavenproject2_SWP_CH\src\main\java\Model\NewBrrow.java
 D:\5\SWP\ChienHoang\mavenproject2_SWP\mavenproject2_SWP_CH\src\main\java\Controller\Admin\ManageBooksController.java
 D:\5\SWP\ChienHoang\mavenproject2_SWP\mavenproject2_SWP_CH\src\main\java\Controller\Admin\ManageBorrowsController.java
+D:\5\SWP\ChienHoang\mavenproject2_SWP\mavenproject2_SWP_CH\src\main\java\Model\Feedback.java
 D:\5\SWP\ChienHoang\mavenproject2_SWP\mavenproject2_SWP_CH\src\main\java\Controller\User\SearchBookController.java
+D:\5\SWP\ChienHoang\mavenproject2_SWP\mavenproject2_SWP_CH\src\main\java\Dao\FeedbackDao.java
 D:\5\SWP\ChienHoang\mavenproject2_SWP\mavenproject2_SWP_CH\src\main\java\Controller\Admin\UpdateUsersController.java
 D:\5\SWP\ChienHoang\mavenproject2_SWP\mavenproject2_SWP_CH\src\main\java\com\mycompany\mavenproject2\JakartaRestConfiguration.java
 D:\5\SWP\ChienHoang\mavenproject2_SWP\mavenproject2_SWP_CH\src\main\java\Model\Borrow.java

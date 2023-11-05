@@ -25,6 +25,7 @@ public class ManageBorrowsController extends HttpServlet {
             req.getSession().removeAttribute("session_mess");
         }
         ArrayList<NewBrrow> arrayList = new BorrowDao().getAllBorrow2();
+        System.out.println(arrayList.get(0));
         req.setAttribute("borrows", arrayList);
         req.getRequestDispatcher("/WEB-INF/view/admin/manage-borrows.jsp").forward(req, resp);
     }
