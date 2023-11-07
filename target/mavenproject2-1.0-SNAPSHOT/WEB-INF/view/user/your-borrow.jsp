@@ -1,4 +1,6 @@
 <%@include file="../include/head.jsp"%>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@page contentType="text/html" pageEncoding="utf-8" %>
 <div class="container-fluid">
     <div class="row justify-content-center">
@@ -24,9 +26,12 @@
                                 </td>
                                 <td>${item.getStatus() == 0 ? "<p class='text-info'>Chờ xác nhận</p>" : (item.getStatus() == 1 ? "<p class='text-success'>Đã xác nhận</p>" : "<p class='text-danger'>Đã Huỷ</p>")}</td>
                                 <td>${item.getCreated_at()}</td>
-                                <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#feedbackModal">
-                                        Đánh giá
-                                    </button>
+                                <td>
+                                    <c:if test="${item.isCanFeedback()}">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                                            Đánh giá
+                                        </button>
+                                    </c:if>
                                 </td>
                             </tr>
                             <!-- Modal Feedback -->
@@ -56,6 +61,7 @@
                                                 <textarea class="form-control" id="message" name="message" required rows="4"></textarea>
                                             </div>
                                             <input type="hidden" name="hkId" value="${item.getBook_id()}">
+                                            <input type="hidden" name="borrowId" value="${item.getId()}">
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>

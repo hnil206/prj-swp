@@ -1,3 +1,42 @@
+header {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand svg {
+    fill: #ffcc00; /* Set the color of the Bootstrap logo */
+    margin-right: 5px;
+}
+
+.navbar-nav .nav-link {
+    color: #ffcc00; /* Set the color of the navigation links */
+    margin: 0 15px;
+    transition: 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffffff; /* Change link color on hover */
+}
+
+.user-section img {
+    border: 2px solid #ffcc00;
+}
+
+.user-section .btn {
+    color: #ffcc00;
+    border-color: #ffcc00;
+    transition: 0.3s;
+}
+
+.user-section .btn:hover {
+    color: #ffffff;
+    background-color: #ffcc00;
+    border-color: #ffcc00;
+}
+
+
+
+
+/**/
 .navbar{
     background-color:silver ;
     ;
@@ -164,4 +203,8 @@
 .nav-link.danger {
     /* Màu chữ khi trạng thái là danger */
     color: #dc3545;
+}
+/**/
+.footer{
+    margin-top: 1000px;
 }

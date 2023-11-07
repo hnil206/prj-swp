@@ -4,7 +4,9 @@
  */
 package Controller.User;
 
+import Dao.BorrowDao;
 import Dao.FeedbackDao;
+import Model.Borrow;
 import Model.User;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
@@ -13,6 +15,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 
 /**
  *
@@ -79,10 +82,20 @@ public class FeedbacksController extends HttpServlet {
         String id = ((User) request.getSession().getAttribute("user")).id;
         int userId = Integer.parseInt(id);
         int hkId = Integer.parseInt(request.getParameter("hkId"));
-
+        int borrowId = Integer.parseInt(request.getParameter("borrowId"));
         System.out.println("vodayduocnay");
+        
 
         fd.createFeedback(userId, hkId, star, message);
+        BorrowDao bd = new BorrowDao();
+        bd.updateFeedback(borrowId);
+        
+        //lay danh sach nguoi hien tai dang nhap thue
+        ArrayList<Borrow> arrayList = bd.getAllBorrowOfUser(id);
+        request.setAttribute("borrows",arrayList);
+        
+        //chuyen trang
+        request.getRequestDispatcher("/WEB-INF/view/user/your-borrow.jsp").forward(request, response);
     }
 
     /**

@@ -48,21 +48,22 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="media border p-3">
-                <img src="img_avatar3.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
-                <div class="media-body">
-                    <h4>John Doe <small><i>Posted on February 19, 2016</i></small></h4>
-                    <p>Lorem ipsum...</p>
+            <c:forEach var="feedback" items="${listFb}">
+                <div class="media border p-3">
+<img src="${pageContext.request.contextPath}/${feedback.getUserOfFeedback().getAvatar()}" alt="${feedback.getUserOfFeedback().getName()}" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+                    <div class="media-body">
+                        <h4>${feedback.getUserOfFeedback().getName()} <small><i>Posted on ${feedback.getCreateAt()}</i></small></h4>
+                        <p>${feedback.getMessage()}</p>
+                        <h5 class="text-warning">
+                            <c:forEach begin="1" end="${feedback.getStar()}" >
+                                &#9733; <!-- Ký tự ngôi sao Unicode -->
+                            </c:forEach>                          
+                        </h5>
+                    </div>
                 </div>
-            </div>
-            <div class="media border p-3">
-                <img src="img_avatar3.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
-                <div class="media-body">
-                    <h4>John Doe <small><i>Posted on February 19, 2016</i></small></h4>
-                    <p>Lorem ipsum...</p>
-                </div>
-            </div>
+            </c:forEach>
         </div>
+
     </div>
 </div>
 <%@include file="../include/foot.jsp"%>

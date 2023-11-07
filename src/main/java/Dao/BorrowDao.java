@@ -1,5 +1,6 @@
 package Dao;
 
+import Model.Book;
 import Model.Borrow;
 import Model.NewBrrow;
 import Model.Status;
@@ -9,7 +10,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class BorrowDao {
 
@@ -40,15 +44,35 @@ public class BorrowDao {
             preparedStatement.setString(1, user_id);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                arrayList.add(new Borrow(
+                String status = resultSet.getString("status");
+                String startDateString = resultSet.getString("startdate"); // Assuming the start date is in column index 3
+                boolean isFeedback = resultSet.getBoolean("isFeedback");
+
+                // Parse startDateString into a Date object
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // Adjust the date format as per your database schema
+                Date startDate = null;
+                try {
+                    startDate = dateFormat.parse(startDateString);
+                } catch (ParseException e) {
+                    // Handle the exception (e.g., log it or set startDate to null)
+                }
+
+                // Check if status is "0" and startDate is before or equal to today
+                boolean canFeedback = "0".equals(status) && startDate != null && startDate.compareTo(new Date()) <= 0 && resultSet.getBoolean("status");
+                Borrow newBorrow = new Borrow(
                         resultSet.getString(1),
                         resultSet.getString(2),
                         resultSet.getString(3),
                         resultSet.getString("status"),
                         resultSet.getString(5),
-                        resultSet.getString(11),
-                        resultSet.getString("book_name")
-                ));
+                        resultSet.getString("username"),
+                        resultSet.getString("book_name"),
+                        resultSet.getBoolean("isFeedback"),
+                        canFeedback
+                );
+
+
+                arrayList.add(newBorrow);
                 System.out.println(resultSet.getString("status"));
             }
             return arrayList;
@@ -139,6 +163,7 @@ public class BorrowDao {
             return null;
         }
     }
+//hien thi o admin
 
     public ArrayList<NewBrrow> getAllBorrow2() {
         ArrayList<NewBrrow> arrayList = new ArrayList<>();
@@ -155,12 +180,12 @@ public class BorrowDao {
                         resultSet.getInt(4),
                         resultSet.getString(5),
                         resultSet.getString(6),
-                        resultSet.getString(7),
+                        resultSet.getString("useraddress"),
                         resultSet.getString(8),
                         resultSet.getInt(9),
                         resultSet.getString(10),
                         resultSet.getString(11),
-                        resultSet.getString(12),
+                        resultSet.getString(13),
                         resultSet.getString("book_name")
                 ));
             }
@@ -201,10 +226,20 @@ public class BorrowDao {
         }
     }
 
+    public void updateFeedback(int id) {
+        String sql = "UPDATE borrows SET isFeedback = 1 where id = " + id;
+        try {
+            connection = Connect.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public void createBorrow(int userId, int bookId, int bookTypeId, String startDate, String endDate,
             String userAddress, String paymentStatus, Integer status, Timestamp createdAt, String type) {
         String sql = "INSERT INTO borrows (user_id, book_id, booktypeid, startdate, enddate, useraddress, "
-                + "paymentstatus, status, created_at, serviceType) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + "paymentstatus, status, created_at, serviceType, isFeedback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0)";
         connection = Connect.getConnection();
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
 
@@ -228,7 +263,9 @@ public class BorrowDao {
 
     public static void main(String[] args) {
         BorrowDao bd = new BorrowDao();
+        System.out.println(bd.getAllBorrow2().get(0).getUseraddress());
 //        System.out.println(bd.getLastDateById("2"));
-        System.out.println(bd.getAllBorrow2().get(0));
+//        System.out.println(bd.getAllBorrow2().get(0));
+//bd.updateFeedback(110);
     }
 }

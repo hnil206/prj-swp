@@ -4,6 +4,8 @@
  */
 package Model;
 
+import Dao.UserDao;
+
 /**
  *
  * @author DELL
@@ -78,6 +80,10 @@ public class Feedback {
         this.createAt = createAt;
     }
     
+    public User getUserOfFeedback(){
+        UserDao ud = new UserDao();
+        return ud.getUserById(this.userId);
+    }
     
     
 }
