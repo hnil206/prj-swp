@@ -39,7 +39,7 @@
                                 <td>${borrows.size() - loop.index}</td>
                                 <td>${item.getUsername()}</td>
                                 <td>
-                                    <a href="${pageContext.request.contextPath}/admin/edit-book?book_id=${item.getId()}" class="text-decoration-none">${item.getBookname()}</a>
+                                    <a href="${pageContext.request.contextPath}/admin/edit-book?book_id=${item.getBook_id()}" class="text-decoration-none">${item.getBookname()}</a>
                                 </td>
                                 <td>
                                     <span class="badge ${item.getStatus() == 0 ? 'bg-info' : (item.getStatus() == 1 ? 'bg-success' : 'bg-danger')}">
@@ -79,9 +79,11 @@
                         <input type="date" readonly="true" id="startdate"/><br/>
                         <h3>End date</h3>
                         <input type="date" readonly="true" id="enddate"/><br/>
-
-                        <h3>Work address</h3>
-                        <p type="text" readonly="true" id="useraddress "/><br/>
+                        <h3>Payments</h3>
+                        <input type="text" readonly="true" id="paymentstatus"/><br/>
+                        
+<!--                        <h3>Work address</h3>
+                        <p type="text" readonly="true" id="useraddress "/><br/>-->
                         <div/>
                         <div class="form-group">
                             <label for="status">Thay đổi trạng thái</label>
@@ -128,12 +130,13 @@
         }
 
 
-        document.getElementById("exampleModalLabel").innerText = "đơn thuê: " + data.split("|")[1] + " thuê nhân viên có tên: " + data.split("|")[2] + " " + booktype;
+        document.getElementById("exampleModalLabel").innerText = "Đơn thuê: " + data.split("|")[1] + " thuê nhân viên có tên: " + data.split("|")[2] + " " + booktype;
         document.getElementById("borrow_id").value = data.split("|")[0]
         document.getElementById("book_id").value = data.split("|")[4]
         document.getElementById("startdate").value = data.split("|")[5]
         document.getElementById("enddate").value = data.split("|")[6]
         document.getElementById("useraddress").value = data.split("|")[8]
+
 //        console.log(data.split("|")[8])
 
         //console.log('kkkk'+data.split("|")[7])

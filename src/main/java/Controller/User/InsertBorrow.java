@@ -74,16 +74,19 @@ public class InsertBorrow extends HttpServlet {
         String lastDateString = bd.getLastDateById(id); //kiem tra han cuoi cung duoc dat
         String enddate = request.getParameter("enddate"); //cai nay lay tu form
 
+        
         System.out.println("okok" + startdateString + lastDateString);
 // Parse the strings as Date objects using SimpleDateFormat
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date startingdate = null;
         Date lastingDate = null;
+        Date endDateBorrow = null; 
 
         if (lastDateString != null && !lastDateString.isBlank() && !lastDateString.isEmpty()) {
             try {
                 startingdate = dateFormat.parse(startdateString);
                 lastingDate = dateFormat.parse(lastDateString);
+                 endDateBorrow = dateFormat.parse(enddate);
             } catch (java.text.ParseException e) {
                 // Handle the parsing exception, if any
                 e.printStackTrace();
@@ -93,7 +96,10 @@ public class InsertBorrow extends HttpServlet {
 // Compare the dates using the compareTo method
         if (startingdate != null && lastingDate != null && startingdate.compareTo(lastingDate) < 0) {
             request.getSession().setAttribute("session_mess", "warning|Người này đã được đặt đến " + lastDate);
-        } else {
+        }
+        else if(startingdate.compareTo(endDateBorrow) > 0){
+            request.getSession().setAttribute("session_mess", "warning|Thời gian đặt không hợp lệ ");
+        }else {
 
             String address = request.getParameter("address");
             String booktype = request.getParameter("booktype");

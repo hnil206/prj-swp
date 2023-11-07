@@ -27,6 +27,7 @@
         <link href="css/bootstrap/font-awesome.min.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link rel="stylesheet" href="css/mystyle.css" />
+       
         <style>
             .fot {
                 margin-top: 100px;
@@ -48,63 +49,7 @@
             }
         </style>
     </head>
-    <div class="container">
-        <div id="carouselExampleCaptions" class="carousel slide" data-mdb-ride="carousel">
-            <div class="carousel-indicators">
-                <button
-                    type="button"
-                    data-mdb-target="#carouselExampleCaptions"
-                    data-mdb-slide-to="0"
-                    class="active"
-                    aria-current="true"
-                    aria-label="Slide 1"
-                    ></button>
-                <button
-                    type="button"
-                    data-mdb-target="#carouselExampleCaptions"
-                    data-mdb-slide-to="1"
-                    aria-label="Slide 2"
-                    ></button>
-                <button
-                    type="button"
-                    data-mdb-target="#carouselExampleCaptions"
-                    data-mdb-slide-to="2"
-                    aria-label="Slide 3"
-                    ></button>
-            </div>
-            <div class="carousel-inner" >
-                <div class="carousel-item active">
-                    <img src="https://images.pexels.com/photos/6195277/pexels-photo-6195277.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block w-100" alt="Wild Landscape"/>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp" class="d-block w-100" alt="Camera"/>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Second slide label</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp" class="d-block w-100" alt="Exotic Fruits"/>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Third slide label</h5>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleCaptions" data-mdb-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleCaptions" data-mdb-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    </div>
+    
 
     <div class="container">
         <h1 class="custom-title">CleanHouse - 
@@ -181,7 +126,7 @@
                 >
                 <!-- Left -->
                 <div class="me-5">
-                    <span>Get connected with us on social networks:</span>
+                    <span>Hãy kết nối với chúng tôi qua:</span>
                 </div>
                 <!-- Left -->
 
@@ -233,22 +178,22 @@
                         <!-- Grid column -->
                         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                             <!-- Links -->
-                            <h6 class="text-uppercase fw-bold">Products</h6>
+                            <h3 class="text-uppercase fw-bold">Nhiều loại dịch vụ</h3>
                             <hr
                                 class="mb-4 mt-0 d-inline-block mx-auto"
                                 style="width: 60px; background-color: #7c4dff; height: 2px"
                                 />
                             <p>
-                                <a href="#!" class="text-dark">MDBootstrap</a>
+                                <a href="#!" class="text-dark">Giúp việc gia đình</a>
                             </p>
                             <p>
-                                <a href="#!" class="text-dark">MDWordPress</a>
+                                <a href="#!" class="text-dark">Chăm sóc trẻ em</a>
                             </p>
                             <p>
-                                <a href="#!" class="text-dark">BrandFlow</a>
+                                <a href="#!" class="text-dark">Chăm sóc người già</a>
                             </p>
                             <p>
-                                <a href="#!" class="text-dark">Bootstrap Angular</a>
+                                <a href="#!" class="text-dark">Chăm sóc người bệnh</a>
                             </p>
                         </div>
                         <!-- Grid column -->
@@ -256,22 +201,22 @@
                         <!-- Grid column -->
                         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                             <!-- Links -->
-                            <h6 class="text-uppercase fw-bold">Useful links</h6>
+                            <h3 class="text-uppercase fw-bold">Thái độ nhân viên</h3>
                             <hr
                                 class="mb-4 mt-0 d-inline-block mx-auto"
                                 style="width: 60px; background-color: #7c4dff; height: 2px"
                                 />
                             <p>
-                                <a href="#!" class="text-dark">Your Account</a>
+                                <a href="#!" class="text-dark">Nỗ lực</a>
                             </p>
                             <p>
-                                <a href="#!" class="text-dark">Become an Affiliate</a>
+                                <a href="#!" class="text-dark">Thật Thà</a>
                             </p>
                             <p>
-                                <a href="#!" class="text-dark">Shipping Rates</a>
+                                <a href="#!" class="text-dark">Cống hiến</a>
                             </p>
                             <p>
-                                <a href="#!" class="text-dark">Help</a>
+                                <a href="#!" class="text-dark"></a>
                             </p>
                         </div>
                         <!-- Grid column -->
@@ -279,13 +224,13 @@
                         <!-- Grid column -->
                         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                             <!-- Links -->
-                            <h6 class="text-uppercase fw-bold">Contact</h6>
+                            <h4 class="text-uppercase fw-bold">Liên hệ</h4>
                             <hr
                                 class="mb-4 mt-0 d-inline-block mx-auto"
                                 style="width: 60px; background-color: #7c4dff; height: 2px"
                                 />
-                            <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-                            <p><i class="fas fa-envelope mr-3"></i> info@example.com</p>
+                            <p><i class="fas fa-home mr-3"></i> Đà Nẵng, Ngũ Hành Sơn, 123 Street</p>
+                            <p><i class="fas fa-envelope mr-3"></i> emailabc@example.com</p>
                             <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
                             <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
                         </div>
@@ -301,9 +246,9 @@
                 class="text-center p-3"
                 style="background-color: rgba(0, 0, 0, 0.2)"
                 >
-                © 2020 Copyright:
+                © 2020 Copyright
                 <a class="text-dark" href="https://mdbootstrap.com/"
-                   >MDBootstrap.com</a
+                   ></a
                 >
             </div>
             <!-- Copyright -->

@@ -96,7 +96,7 @@
                                             <td><label for="enddate">End date</label></td>
                                             <td><input type="date" name="enddate" id="enddate" required></td>
                                         </tr>
-                                        <!--                                        <script>
+<!--                                                                            <script>
                                                                                     var today = new Date().toISOString().split('T')[0];
                                                                                     document.getElementById('startdate').setAttribute('min', today);
                                                                                     document.getElementById('enddate').setAttribute('min', today);
